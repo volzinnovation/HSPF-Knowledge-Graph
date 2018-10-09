@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+    <title>Knowledge Graph Wirtschaftsingenieurwesen</title>
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link href="style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.hs-pforzheim.de/typo3conf/ext/wr_hspfo/Resources/Public/Icons/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div id="cy"></div>
+    <div id="loading">
+        <span class="fa fa-refresh fa-spin"></span>
+    </div>
+
+    <div id="search-wrapper">
+        <input type="text" class="form-control" id="search" placeholder="&#xf002; Suche">
+    </div>
+
+    <div id="info">
+    </div>
+
+    <script src="fastclick.min.js"></script>
+    <script src="jquery.min.js"></script>
+
+    <script src="cytoscape.min.js"></script>
+
+    <script src="jquery.qtip.min.js"></script>
+    <link href="jquery.qtip.min.css" rel="stylesheet" type="text/css" />
+    <script src="cytoscape-qtip.js"></script>
+
+    <script src="bluebird.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="typeahead.bundle.js"></script>
+    <script src="handlebars.min.js"></script>
+    <script src="lodash.min.js"></script>
+
+    <script src="demo.js"></script>
+
+    <button id="reset" class="btn btn-default"><i class="fa fa-arrows-h"></i></button>
+
+    <button id="filter" class="btn btn-default"><i class="fa fa-filter"></i></button>
+
+    <button id="about" class="btn btn-default"><i class="fa fa-info"></i></button>
+
+    <div id="about-content">
+        <p>Knowledge Graph Wirtschaftsingeniuerwesen auf Basis Abstimmung der Lehrinhalte (Stand September 2016)</p>
+        <p><a href="https://www.hs-pforzheim.de/kontakt/datenschutzerklaerung/">Datenschutzerklärung</a> <a href="https://www.hs-pforzheim.de/kontakt/impressum/">Impressum</a></p>
+    </div>
+
+    <div id="filters">
+        <div class="filterset-section-title">Einschränken auf</div>
+
+        <div class="filtersets">
+            <div class="filterset">
+                <div class="filterset-title">Fakultät</div>
+                <input id="soft" type="checkbox" checked></input><label for="soft">Gestaltung</label><br />
+                <input id="semi-soft" type="checkbox" checked></input><label for="semi-soft">Technik</label><br />
+                <input id="semi-hard" type="checkbox" checked></input><label for="semi-hard">Wirtschaft und Recht</label><br />
+            </div>
+            <div class="filterset">
+                <div class="filterset-title">Typ</div>
+                <input id="chs-en" type="checkbox" checked></input><label for="chs-en">Forschung</label><br />
+                <input id="chs-fr" type="checkbox" checked></input><label for="chs-fr">Lehre</label><br />
+                <input id="chs-fr" type="checkbox" checked></input><label for="chs-fr">Transfer</label><br />
+            </div>
+            <div class="filterset">
+                <div class="filterset-title">Sprache</div>
+                <!-- <div class="filterset-title">Type</div> -->
+                <input id="white" type="checkbox" checked></input><label for="white">Deutsch</label><br />
+                <input id="red" type="checkbox" checked></input><label for="red">Englisch</label><br />
+                <input id="cider" type="checkbox" checked></input><label for="cider">Esperanto</label>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>
