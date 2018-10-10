@@ -3,7 +3,7 @@
 - Ziel: Speicherung des Prof-Themen Graph
 - Aktuell: JSON Datei
 - Aufgaben: 
-	- Umstellung auf Neo4J Graphdatenbank
+	- Umstellung auf Neo4J Graphdatenbank (https://neo4j.com/)
 	- Initialer Inhalt: Bisherige JSON Datei
 	- Später: Prof, Themen Paare aus Moodle
 	- Profs aus HS ActiveDirectory repliziert
