@@ -8,3 +8,5 @@
 	- alternativ, Ergebnis der Suche ist ein Prof: Prof plus dessen Themen (Teilgraph)
 	- Benutzer kann weiter navigieren und lick auf Knoten navigiert weiter im Graph
 	- Anbindung an Modul 2
+
+- Erste Aufgabe: Issues erstellen mit Aufgaben

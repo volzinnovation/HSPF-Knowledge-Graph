@@ -9,4 +9,7 @@
 	- Profs aus HS ActiveDirectory repliziert
 	- Ausführung auf vorkonfiguriertem Server
 	- Koordination mit Modul 3
+- Rahmenbedingungen:
+	- Datenbankschema muss für alle anderen Module passen
 
+- Erste Aufgabe: Issues erstellen mit Aufgaben
