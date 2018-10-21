@@ -10,3 +10,5 @@
 - Rahmenbedingung: Muss Mobil abrufbar sein und sich auch mobil schön darstellen
 	
 - Erste Aufgabe: Issues erstellen mit Aufgaben
+
+- Beispiel Suchmaschine als Frontend zu Solr im Repository
