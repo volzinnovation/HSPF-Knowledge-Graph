@@ -51,6 +51,9 @@ dependencies {
     compile group: 'org.apache.lucene', name: 'lucene-analyzers-common', version: '5.5.5'
     // https://mvnrepository.com/artifact/org.apache.lucene/lucene-queryparser
     compile group: 'org.apache.lucene', name: 'lucene-queryparser', version: '5.5.5'
+    compile group: 'org.apache.lucene', name: 'lucene-misc', version: '5.5.5'
+// https://mvnrepository.com/artifact/com.google.guava/guava
+    compile group: 'com.google.guava', name: 'guava', version: '27.0-jre'
 
 }
 

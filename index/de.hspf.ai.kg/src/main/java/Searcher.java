@@ -1,6 +1,6 @@
 
 
-import org.apache.lucene.index.DirectoryReader;
+import org.apache.lucene.index.*;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.ScoreDoc;
@@ -12,10 +12,7 @@ import org.apache.lucene.document.Document;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -104,11 +101,10 @@ public class Searcher {
         } catch (ParseException e2) {
             System.err.println("Query " + suchtext + " cannot be parsed");
         }
-
     }
 
-    public static void print(String s) {
-        System.out.println(s);
-    }
+        public static void print (String s){
+            System.out.println(s);
+        }
 
-}
+    }
