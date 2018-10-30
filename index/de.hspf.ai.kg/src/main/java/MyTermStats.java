@@ -1,4 +1,4 @@
-import org.apache.lucene.misc.TermStats;
+
 
 /**
  * Holder for statistics for a term in a specific field.

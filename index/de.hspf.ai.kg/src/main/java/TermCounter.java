@@ -1,24 +1,14 @@
-
+import com.google.common.collect.ImmutableList;
 import org.apache.lucene.index.*;
+import org.apache.lucene.misc.HighFreqTerms;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
-import com.google.common.collect.ImmutableList;
-import org.apache.lucene.index.IndexReader;
-import org.apache.lucene.misc.HighFreqTerms;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
-import java.util.stream.Collectors;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import org.apache.lucene.util.BytesRef;
 /**
  * A hack to identify the top k Terms in an index
  */
