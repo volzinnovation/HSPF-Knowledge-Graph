@@ -9,7 +9,9 @@
 	
 - Erste Aufgabe: Issues erstellen mit Aufgaben
 
-- Beispiel Suchmaschine als Frontend zu Solr im Repository
+- Bereitgestellte Code Beispiele:
+	- HTML - Webseite als Suchmaschine als Frontend zu Solr im Repository (suchmaschine.html)[suchmaschine.html]
+	- Java-Projekt zur Identifikation des besten Kurses für eine Suchanfrage (de.hspf.ai.kg)[de.hspf.ai.kg] als Basis für Top Themen Identifikation pro Prof. *Dies benötigt Java JDK und Gradle für die Übersetzung, Texteditor oder IntelliJ Community Edition zur Bearbeitung des Beispiel-Quellcode (Searcher.java)*
 
 - Wichtige Links:
 - [Lucene 5.5.0 Klassenbibliothek](http://lucene.apache.org/core/5_5_0/index.html), insbesondere relevant für Aufgabe 2 sind IndexReader und IndexSearcher, um eine Anfrage auszuwerten.
