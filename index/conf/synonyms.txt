@@ -19,6 +19,7 @@ fooaaa,baraaa,bazaaa
 
 # Some synonym groups specific to this example
 GB,gib,gigabyte,gigabytes
+Management-Methoden,Managementmethoden
 MB,mib,megabyte,megabytes
 Television, Televisions, TV, TVs
 #notice we use "gib" instead of "GiB" so any WordDelimiterFilter coming
