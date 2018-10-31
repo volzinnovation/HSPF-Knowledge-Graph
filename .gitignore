@@ -1,0 +1,10 @@
+
+index/de.hspf.ai.kg/out/production/classes/BytesRefUtils.class
+index/de.hspf.ai.kg/out/production/classes/DocTermVector.class
+index/de.hspf.ai.kg/out/production/classes/MyTermStats.class
+index/de.hspf.ai.kg/out/production/classes/Searcher.class
+index/de.hspf.ai.kg/.idea/workspace.xml
+index/de.hspf.ai.kg/out/production/classes/TermCounter.class
+index/de.hspf.ai.kg/out/production/resources/META-INF/services/org.apache.lucene.codecs.Codec
+index/de.hspf.ai.kg/out/production/resources/META-INF/services/org.apache.lucene.codecs.DocValuesFormat
+index/de.hspf.ai.kg/out/production/resources/META-INF/services/org.apache.lucene.codecs.PostingsFormat
