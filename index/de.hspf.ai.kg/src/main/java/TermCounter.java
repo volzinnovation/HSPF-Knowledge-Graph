@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  */
 public class TermCounter {
     // FIXME Get path from a properties file or pass as argument
-    final static String path = "C:\\temp\\nudel\\data\\index";
+    final static String path = "C:\\Nudel\\nudel\\data\\index";
 
     /**
      * Run TermCounter
@@ -46,9 +46,10 @@ public class TermCounter {
             time = System.currentTimeMillis() - time ;
 
             print("Collecting top " + k + " terms took " + time + " ms:");
-
+            int i = 1;
             for( MyTermStats t : terms) {
-                print(t.toString());
+                print("#" + i + "\t" + t.toString());
+                i++;
             }
 /*
             Map<String, Long> terms = countTerms(ir, fields);
