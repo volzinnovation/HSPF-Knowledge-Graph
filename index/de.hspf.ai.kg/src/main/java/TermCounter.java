@@ -1,6 +1,6 @@
 import com.google.common.collect.ImmutableList;
 import org.apache.lucene.index.*;
-import org.apache.lucene.misc.HighFreqTerms;
+    import org.apache.lucene.misc.HighFreqTerms;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
@@ -29,7 +29,7 @@ public class TermCounter {
             // Concatenate arguments into one string
             field = args[1];
         }
-        print("Hello, collecting top terms in field '" + field + "'");
+        print("Hello, collecting document frequency for terms in field '" + field + "'");
 
         // Try to open Moodle Directory at path
         java.nio.file.Path p = Paths.get(path);
@@ -120,6 +120,7 @@ public class TermCounter {
      * @param field - the field name
      * @param numTerms - the max number of terms to be returned
      * @throws Exception - if an error occurs when collecting term statistics
+     * @return Terms ordered ny highest document frequency descending.
      */
     public static List<MyTermStats> getTopTerms(IndexReader reader, String field, int numTerms) throws Exception {
         Map<String, List<MyTermStats>> topTermsCache = new WeakHashMap<>();
