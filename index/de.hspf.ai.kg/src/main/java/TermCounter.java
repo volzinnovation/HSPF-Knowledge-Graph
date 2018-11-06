@@ -22,7 +22,7 @@ public class TermCounter {
      * @param args[0] field to collect term statistics for, no argument uses _text_ field
      */
     public static void main(String args[]) {
-        int k = 100;
+        int k = 500;
         String field = "_text_";
         // Use command line arguments instead of preset value as search text
         if (args.length > 0) {
