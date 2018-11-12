@@ -76,7 +76,7 @@ producer
 dc:creator
 meta:author
 an
-für
+fÃ¼r
 5
 xmp:creatortool
 2015
@@ -168,11 +168,11 @@ mar
 3
 for
 31
-über
+Ã¼ber
 dr
 1
 5
-können
+kÃ¶nnen
 einen
 was
 prof
@@ -278,7 +278,7 @@ that
 gibt
 aufgabe
 this
-müssen
+mÃ¼ssen
 er
 zwei
 from
@@ -323,7 +323,7 @@ wurde
 ob
 stellen
 o
-möglich
+mÃ¶glich
 ihrer
 daten
 dazu
@@ -439,7 +439,7 @@ line
 64
 meta:word
 gut
-während
+wÃ¤hrend
 ende
 01. Mrz
 cp:subject
@@ -466,7 +466,7 @@ between
 each
 sollten
 there
-dafür
+dafÃ¼r
 high
 viel
 when
@@ -506,7 +506,7 @@ true
 dar
 services
 63
-gegenüber
+gegenÃ¼ber
 61
 weiteren
 al
@@ -516,8 +516,8 @@ most
 hoch
 https
 85
-zunächst
-lässt
+zunÃ¤chst
+lÃ¤sst
 ergibt
 hilfe
 darauf
@@ -549,7 +549,7 @@ jahren
 et
 71
 68
-möglichkeit
+mÃ¶glichkeit
 jahre
 over
 falls
@@ -591,7 +591,7 @@ hohe
 seiner
 74
 besonders
-würde
+wÃ¼rde
 like
 org.apache.tika.parser.microsoft.ooxml.ooxmlparser
 take
@@ -605,7 +605,7 @@ vnd.openxmlformats
 bestimmten
 beide
 500
-wäre
+wÃ¤re
 2001
 eigenen
 uns
@@ -621,7 +621,7 @@ ebenfalls
 ag
 02. Feb
 allgemeine
-könnte
+kÃ¶nnte
 etwas
 who
 78
@@ -640,9 +640,9 @@ could
 meta:character
 both
 aktuelle
-grüße
+grÃ¼ÃŸe
 unterschiedliche
-große
+groÃŸe
 bestimmte
 welches
 ergeben
@@ -650,13 +650,13 @@ ergeben
 within
 dessen
 liebe
-zusätzlich
+zusÃ¤tzlich
 bestimmt
 oft
 weise
 03. Jan
 then
-darüber
+darÃ¼ber
 iv
 letzten
 ins
@@ -685,18 +685,18 @@ daraus
 86
 before
 79
-mögliche
+mÃ¶gliche
 without
 d.h
 96
-möglichst
+mÃ¶glichst
 zwar
-häufig
+hÃ¤ufig
 94
 oben
 denn
 next
-groß
+groÃŸ
 beginn
 87
 88
@@ -723,7 +723,7 @@ angaben
 were
 bekannt
 seiten
-enthält
+enthÃ¤lt
 berlin
 seit
 notwendig
