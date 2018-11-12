@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 public class Searcher {
     // FIXME Get path from a properties file or pass as argument
     final static String path = "C:\\Nudel\\nudel\\data\\index";
-    static String suchtext = "XML ";
+    static String suchtext = "Orthonormalsystem";
 
     /**
      * Run Searcher with command java -jar de.hspf.ai.kg-<version>.jar <Your search terms> on the console (CMD or PowerShell in Windows)
@@ -82,7 +82,7 @@ public class Searcher {
                 // Print Top k courses per Search term
 
                 // todo. abfrage an datenbank, input: kurs_ID, output: prof_id
-                int top = 3;
+                int top = 10;
 
                 time = (System.currentTimeMillis() - time); // Measure time needed
                 print("... I identify the following " + top + " courses, which contain '" + suchtext + "' most often (" + time + " ms)");
