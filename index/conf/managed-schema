@@ -398,24 +398,24 @@
   <fieldType name="tlong" class="solr.TrieLongField" positionIncrementGap="0" precisionStep="8"/>
   <fieldType name="tlongs" class="solr.TrieLongField" positionIncrementGap="0" multiValued="true" precisionStep="8"/>
   <field name="_root_" type="string" indexed="true" stored="false"/>
-  <field name="_text_" type="text_general" multiValued="true" indexed="true" stored="false"/>
+  <field name="_text_" type="text_general" multiValued="true" indexed="true" stored="false" docValues="true"/>
   <field name="_version_" type="long" indexed="true" stored="true"/>
-  <field name="areaid" type="string" multiValued="false" indexed="true" stored="true"/>
-  <field name="content" type="text_general" multiValued="false" indexed="true" stored="true"/>
+  <field name="areaid" type="string" multiValued="false" indexed="true" stored="true" docValues="true"/>
+  <field name="content" type="text_general" multiValued="false" indexed="true" stored="true" docValues="true"/>
   <field name="contextid" type="int" multiValued="false" indexed="true" stored="true"/>
-  <field name="courseid" type="int" multiValued="false" indexed="true" stored="true"/>
+  <field name="courseid" type="int" multiValued="false" indexed="true" stored="true" docValues="true"/>
   <field name="description1" type="text_general" multiValued="false" indexed="true" stored="true"/>
   <field name="description2" type="text_general" multiValued="false" indexed="true" stored="true"/>
-  <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
+  <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true" docValues="true"/>
   <field name="itemid" type="int" multiValued="false" indexed="true" stored="true"/>
-  <field name="modified" type="tdate" multiValued="false" indexed="true" stored="true"/>
+  <field name="modified" type="tdate" multiValued="false" indexed="true" stored="true" docValues="true"/>
   <field name="owneruserid" type="int" multiValued="false" indexed="true" stored="true"/>
-  <field name="solr_filecontent" type="text_general" multiValued="false" indexed="true" stored="false"/>
+  <field name="solr_filecontent" type="text_general" multiValued="false" indexed="true" stored="false" docValues="true"/>
   <field name="solr_filecontenthash" type="string" multiValued="false" indexed="true" stored="true"/>
   <field name="solr_filegroupingid" type="string" multiValued="false" indexed="true" stored="true"/>
-  <field name="solr_fileid" type="string" multiValued="false" indexed="true" stored="true"/>
+  <field name="solr_fileid" type="string" multiValued="false" indexed="true" stored="true" docValues="true"/>
   <field name="solr_fileindexstatus" type="int" multiValued="false" indexed="true" stored="true"/>
-  <field name="title" type="text_general" multiValued="false" indexed="true" stored="true"/>
+  <field name="title" type="text_general" multiValued="false" indexed="true" stored="true" docValues="true"/>
   <field name="type" type="int" multiValued="false" indexed="true" stored="true"/>
   <field name="userid" type="text_general" multiValued="false" indexed="true" stored="true"/>
   <dynamicField name="*_txt_en_split_tight" type="text_en_splitting_tight" indexed="true" stored="true"/>

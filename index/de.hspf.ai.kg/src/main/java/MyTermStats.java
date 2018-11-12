@@ -1,8 +1,8 @@
 
 
 /**
- * Holder for statistics for a term in a specific field.
- */
+ * Top Themen zu jedem Course zuordnen
+ */    
 public final class MyTermStats {
 
     private final String decodedTermText;
