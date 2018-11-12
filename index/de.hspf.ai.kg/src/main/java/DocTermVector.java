@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class DocTermVector {
     // FIXME Get path from a properties file or pass as argument
     final static String path = "C:\\Nudel\\nudel\\data\\index";
-    static String fieldName = "content";
+    static String fieldName = "_text_";
     static String suchtext = "XML";
     /**
      * Run Searcher with command java -jar de.hspf.ai.kg-<version>.jar <Your search terms> on the console (CMD or PowerShell in Windows)

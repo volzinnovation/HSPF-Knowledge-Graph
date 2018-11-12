@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a05c2338-cc8d-468c-8b3e-50acad4ee34e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Searcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Searcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TermCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TermCounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conf/managed-schema" beforeDir="false" afterPath="$PROJECT_DIR$/../conf/managed-schema" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DocTermVector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DocTermVector.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -62,13 +62,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1198" />
+          <entry key="java" value="1216" />
           <entry key="txt" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1198" />
+          <entry key="JAVA" value="1216" />
           <entry key="PLAIN_TEXT" value="8" />
         </counts>
       </usages-collector>
@@ -79,11 +79,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/DocTermVector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1900">
-              <caret line="82" column="81" lean-forward="true" selection-start-line="82" selection-start-column="81" selection-end-line="82" selection-end-column="81" />
+            <state relative-caret-position="173">
+              <caret line="71" selection-start-line="71" selection-end-line="71" />
+              <folding>
+                <element signature="e#3042#3059#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,11 +139,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Searcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+            <state relative-caret-position="-136">
+              <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -574,12 +577,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/DocTermVector.java" />
         <option value="$PROJECT_DIR$/src/main/java/TopWordsCourse.java" />
         <option value="$PROJECT_DIR$/src/main/java/MyTermStats.java" />
         <option value="$PROJECT_DIR$/src/main/java/Topwordcourse.java" />
         <option value="$PROJECT_DIR$/src/main/java/TermCounter.java" />
         <option value="$PROJECT_DIR$/src/main/java/Searcher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DocTermVector.java" />
       </list>
     </option>
   </component>
@@ -631,7 +634,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542035079303" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542039937739" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/out/production/classes" />
   </component>
   <component name="RecentsManager">
@@ -651,10 +654,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Searcher11">
+  <component name="RunManager" selected="Application.DocTermVector">
     <configuration name="DocTermVector" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="DocTermVector" />
       <module name="de.hspf.ai.kg_main" />
@@ -765,7 +767,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48292682" visible="true" weight="0.2193646" />
       <window_info id="Structure" order="1" sideWeight="0.51707315" side_tool="true" weight="0.2193646" />
@@ -776,8 +777,8 @@
       <window_info id="Favorites" order="6" sideWeight="0.5009009" side_tool="true" weight="0.2496112" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.5253683" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.39443535" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -845,6 +846,12 @@
           <properties field="suchtext" class="Searcher" />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/DocTermVector.java</url>
+          <line>25</line>
+          <properties field="suchtext" class="DocTermVector" />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -904,13 +911,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DocTermVector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1900">
-          <caret line="82" column="81" lean-forward="true" selection-start-line="82" selection-start-column="81" selection-end-line="82" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/TermCounter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1632">
@@ -933,10 +933,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Searcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+        <state relative-caret-position="-136">
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DocTermVector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
+          <folding>
+            <element signature="e#3042#3059#0" expanded="true" />
           </folding>
         </state>
       </provider>
