@@ -1,0 +1,19 @@
+1)
+
+LOAD CSV WITH HEADERS FROM 'file:///prof.csv' AS line
+CREATE (:Prof { IDprof: toInt(line.id_prof),email: line.email, alias: line.alias, lastname: line.lastname, firstname:line.firstname, school:line.school,role:line.role,office:line.office,phone:line.phone})
+
+2) 
+LOAD CSV WITH HEADERS FROM 'file:///course.csv' AS line
+CREATE (:Course { IDcourse: toInt(line.id_course),name: line.name})
+
+3) 
+USING PERIODIC COMMIT 500
+LOAD CSV WITH HEADERS FROM 'file:///edge_course_prof.csv' AS kanteline
+MATCH (p:Prof {IDprof: toInt(kanteline.id_prof)}), (c:Course { IDcourse: toInt(kanteline.id_course)})
+CREATE (p)-[:teaches]->(c)
+
+
+
+
+
