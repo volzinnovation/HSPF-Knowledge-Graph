@@ -410,7 +410,7 @@
   <field name="itemid" type="int" multiValued="false" indexed="true" stored="true"/>
   <field name="modified" type="tdate" multiValued="false" indexed="true" stored="true"/>
   <field name="owneruserid" type="int" multiValued="false" indexed="true" stored="true"/>
-  <field name="solr_filecontent" type="text_general" multiValued="false" indexed="true" stored="false" docValues="true"/>
+  <field name="solr_filecontent" class="solr.StrField" type="text_general" multiValued="true" indexed="true" stored="true" docValues="true"/>
   <field name="solr_filecontenthash" type="string" multiValued="false" indexed="true" stored="true"/>
   <field name="solr_filegroupingid" type="string" multiValued="false" indexed="true" stored="true"/>
   <field name="solr_fileid" type="string" multiValued="false" indexed="true" stored="true"/>
