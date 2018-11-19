@@ -8,13 +8,15 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+
+import static jdk.nashorn.internal.parser.TokenType.NOT;
 
 /**
  * A hack to identify the top k Moodle Courses for a given search term
@@ -23,7 +25,54 @@ import java.util.stream.Collectors;
 public class Searcher {
     // FIXME Get path from a properties file or pass as argument
     final static String path = "C:\\Nudel\\nudel\\data\\index";
-    static String suchtext = "Orthonormalsystem";
+    static String suchtext = "solr_filecontent:XML";
+    static String notsearch = "(NOT areaid:mod_forum  post)";
+    static HashMap<String, List> tabelle = new HashMap<>();
+
+
+    private static void tabelleLesen() {
+        // Mapping Datei einlesen
+        String csvFile = "C:\\CSV\\user_course1.csv";
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = ",";
+        try {
+
+            br = new BufferedReader(new FileReader(csvFile));
+            while ((line = br.readLine()) != null) {
+                List<String> professoren = new LinkedList<String>();
+
+                // use comma as separator
+                String[] courseid = line.split(cvsSplitBy);
+                String kurs = courseid[1];
+                String prof = courseid[0];
+                System.out.println("courseid = " + courseid[0] + "," + " belongs to    " + "Prof " + courseid[1]);
+                if (tabelle.containsKey(kurs)) {
+                    // der Liste den Professor hinzufügen
+                    professoren = tabelle.get(kurs);
+                    professoren.add(prof);
+                    tabelle.put(kurs, professoren);
+                } else {
+                    // Kurs zu Professor hinzufügen zur Tabelle
+                    professoren.add(prof);
+                    tabelle.put(kurs, professoren);
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     /**
      * Run Searcher with command java -jar de.hspf.ai.kg-<version>.jar <Your search terms> on the console (CMD or PowerShell in Windows)
@@ -31,6 +80,7 @@ public class Searcher {
      * @param args Terms to search for, if left out standard search term is Investition
      */
     public static void main(String args[]) {
+        tabelleLesen();
         // Use command line arguments instead of preset value as search text
         if (args.length > 0) {
             // Concatenate arguments into one string
@@ -50,7 +100,7 @@ public class Searcher {
 
             // Start Searching the Index
             long time = System.currentTimeMillis(); // Remember when the search started
-            org.apache.lucene.search.Query query = new org.apache.lucene.queryparser.classic.QueryParser("_text_", analyzer).parse(suchtext);
+            org.apache.lucene.search.Query query = new org.apache.lucene.queryparser.classic.QueryParser("solr_filecontent", analyzer).parse(suchtext + notsearch);
             // Search for suchtext and accept 1 million results
             TopDocs docs = searcher.search(query, 1000000);
             ScoreDoc[] hits = docs.scoreDocs;
@@ -89,7 +139,11 @@ public class Searcher {
                 for (String course_id : sortedCourses.keySet()) {
                     if (top == 0) break;
                     Integer count = courses.get(course_id);
+                    print("Tabellen einträge " + tabelle.size());
                     print(" Course " + course_id + " : " + count);
+                    print(" Prof " + tabelle.get(course_id) + " : " + count);
+
+                    /// xxx
                     top--;
                 }
 
