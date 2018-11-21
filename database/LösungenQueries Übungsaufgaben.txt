@@ -1,0 +1,21 @@
+1)
+MATCH (course {name: "RM"})<-[:teaches]-(IDprof) RETURN IDprof
+
+2)
+CREATE (:Topic {text:'XML'})
+
+3)
+MATCH (p:Prof{lastname:"Volz"}), (t:Topic {text:"XML"}) CREATE (p)-[:knows]->(t)
+
+4)
+MATCH (p:Prof {lastname:"Volz"})-[knows]-(t:Topic{text:"XML"}) SET knows.Version = "0"
+
+5)
+MATCH (p:Prof)
+WHERE p.IDprof = 7
+RETURN p.email
+
+6)
+MATCH (p:Prof)
+WHERE p.email = "raphael.volz@hs-pforzheim.de"
+RETURN p.firstname, p.lastname, p.role, p.phone, p.school, p.alias, p.office
