@@ -1,0 +1,5 @@
+1)
+CREATE INDEX ON :Prof(alias,lastname,firstname,school,role,office,phone,email,IDprof)
+
+2)
+CREATE INDEX ON :course(IDcourse,name)
