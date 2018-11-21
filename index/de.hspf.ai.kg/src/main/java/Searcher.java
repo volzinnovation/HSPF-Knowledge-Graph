@@ -16,7 +16,6 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static jdk.nashorn.internal.parser.TokenType.NOT;
 
 /**
  * A hack to identify the top k Moodle Courses for a given search term
