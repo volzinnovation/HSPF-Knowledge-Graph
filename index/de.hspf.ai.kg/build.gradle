@@ -30,12 +30,13 @@ task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'HSPF Index Searcher',
                 'Implementation-Version': version,
-                'Main-Class': 'Searcher'
+                'Main-Class': 'TermCounter'
     }
     baseName = project.name
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     from ('./src/main/resources') {
         include 'META-INF/services/org.apache.lucene.codecs.Codec'
+        include 'user_course.csv'
     }
     with shadowJar
 }

@@ -40,6 +40,7 @@ public class TermCounter {
      * @param args 3 Field to search for, default "_text_"
      */
     public static void main(String args[]) {
+        MappingUtils mu = new MappingUtils();
         // Use command line arguments instead of preset value as search text
         if (args.length > 0) {
             // First argument is the path of the lucene index
@@ -84,7 +85,7 @@ public class TermCounter {
             GermanAnalyzer analyzer = new org.apache.lucene.analysis.de.GermanAnalyzer();
 
             // Write Header for CSV File
-            print("Nr,Term,Kurs,TF,DF,TFIDF,TermLength,LEN_TFIDF");
+            print("Nr,Term,Kurs,Prof,TF,DF,TFIDF,TermLength,LEN_TFIDF");
             // Write rows of CSV file
             long i = 1L; // Count processed document-term combinations
             // Iterate over all top terms
@@ -167,8 +168,14 @@ public class TermCounter {
                                     double tl_tfidf = tfidf * term_length;
                                     // If the minimum value for the metric is met, produce a line for the CSV file
                                     if (tl_tfidf > min_tfidf) {
-                                        print(i + "," + term + "," + course + "," + tf + "," + df + "," + tfidf + "," + term_length + "," + tl_tfidf);
-
+                                        if(mu.getProfessorIds(course) != null) {
+                                            for(String prof : mu.getProfessorIds(course)) {
+                                                print(i + "," + term + "," + course + "," + prof + "," + tf + "," + df + "," + tfidf + "," + term_length + "," + tl_tfidf);
+                                            }
+                                        } else {
+                                            // TODO Check where this occurs, prof - course mapping table is incomplete, if this happens
+                                            print(i + "," + term + "," + course + "," + "???" + "," + tf + "," + df + "," + tfidf + "," + term_length + "," + tl_tfidf);
+                                        }
                                     }
                                 }
                             }
