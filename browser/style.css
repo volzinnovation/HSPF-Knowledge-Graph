@@ -57,10 +57,10 @@ button {
 }
 
 #rahmen {
-    background-color: #ffff00;
+    background-color: #FFFFFF;
     width: 50em;
     height: 10em;
-    opacity: 0.1;
+    opacity: 0.2;
     border: 2px black solid;
     position: absolute;
   	left: 31%;

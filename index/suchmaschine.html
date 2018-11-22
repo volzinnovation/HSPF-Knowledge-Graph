@@ -1,9 +1,9 @@
 <html>
 <head>
-    <title>Nudel - a Moodle Search Engine</title>
+    <title>Nudel5 - a Moodle Search Engine</title>
 </head>
 <body>
-    <h3>Diesel Nudel durchsucht das Moodle.</h3>
+    <h3>Dieses Nudel5 durchsucht das Moodle.</h3>
 
     Nach was soll ich suchen ? <input id="query" /> 
     <button id="search">Suchen</button>
@@ -30,7 +30,7 @@
             return;
         }
 
-        var url='http://141.47.5.51:8983/solr/nudel/select?q='+query+'&version=2.2&start=0&rows=10000&indent=on&wt=json&callback=?&json.wrf=on_data';
+        var url='http://141.47.5.51:8983/solr/nudel5/select?q='+query+'&version=2.2&start=0&rows=10000&indent=on&wt=json&callback=?&json.wrf=on_data';
         $.getJSON(url);
     }
 
