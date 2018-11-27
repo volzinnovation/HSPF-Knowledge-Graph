@@ -47,7 +47,8 @@ public class UpdateOwnerId {
 
     /**
      * Run Update Owner Ids to produce JSON to upload manually into SolR admin interface
-     *
+     * or use curl, e.g. for your indexname after saving the output of this script into a file called output.json
+     * curl 'http://localhost:8983/solr/indexname/update?commit=true' --data-binary @output.json -H 'Content-type:application/json'
      * @param args 0 Path
      */
     public static void main(String args[]) {
