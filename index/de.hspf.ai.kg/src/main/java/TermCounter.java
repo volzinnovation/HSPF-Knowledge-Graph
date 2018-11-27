@@ -23,13 +23,13 @@ import java.util.stream.Collectors;
  * @author Raphael Volz
  */
 public class TermCounter {
-    static String path = "C:\\temp\\nudel\\data\\index";
+    static String path = "C:\\Nudel\\nudel5\\data\\index";
 
-    static double min_tfidf =  50000.0; // Filter items with term length adjusted TF IDF larger this value
+    static double min_tfidf =  70000.0; // Filter items with term length adjusted TF IDF larger this value
     static int min_df = 10; // Minimum Document Frequency
     static String term, course;
     static int tf, df;
-    static String field = "_text_";
+    static String field = "solr_filecontent";
 
     /**
      * Run TermCounter
