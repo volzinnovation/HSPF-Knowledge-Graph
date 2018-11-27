@@ -64,6 +64,7 @@ public class UpdateOwnerId {
             // Setup access to the index files
             Directory dir = FSDirectory.open(p);
             DirectoryReader ir = DirectoryReader.open(dir);
+            print("[");
             for (int j = 0; j < ir.maxDoc(); j++) {
                 Document d = ir.document(j);
                 String id = d.get("id");
@@ -71,6 +72,7 @@ public class UpdateOwnerId {
                 String json = toJSON(id, mu.getProfessorIds(course));
                 if(json != null) print(json + (j < (ir.maxDoc()-2) ? "," : ""));
             }
+            print("]");
             ir.close();
             dir.close();
         } catch (IOException e) {
