@@ -30,7 +30,7 @@ task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'HSPF Index Searcher',
                 'Implementation-Version': version,
-                'Main-Class': 'TermCounter'
+                'Main-Class': 'UpdateOwnerId'
     }
     baseName = project.name
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
@@ -55,7 +55,9 @@ dependencies {
     compile group: 'org.apache.lucene', name: 'lucene-misc', version: '5.5.5'
 // https://mvnrepository.com/artifact/com.google.guava/guava
     compile group: 'com.google.guava', name: 'guava', version: '27.0-jre'
-
+    compile group: 'org.languagetool', name: 'language-de', version: '4.2'
+    compile group: 'org.languagetool', name: 'language-en', version: '4.2'
+    compile group: 'org.carrot2', name: 'morfologik-tools', version: '2.1.5'
 }
 
 
