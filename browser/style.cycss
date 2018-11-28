@@ -6,11 +6,11 @@ core {
 edge {
 	curve-style: haystack;
 	haystack-radius: 0;
-	opacity: 0.00; 
+	opacity: 0.333; 
 	width: 2;
 	z-index: 0;
 	overlay-opacity: 0;
-  events: no;
+ events: no;
 }
 
 node {
@@ -36,37 +36,25 @@ edge[interaction = "cc"] {
 	width: 4;
 }
 
-node[classes = "prof"],
-node[NodeType = "CheeseType"] {
+node[classes = "Prof"] {
 	background-color: #ebcd23;
 	text-outline-color: #ebcd23;
 	width: mapData(Quality, 70, 100, 20, 50);
 	height: mapData(Quality, 70, 100, 20, 50);
 }
 
-node[NodeType = "WhiteWine"] {
-	background-color: white;
-	text-outline-color: white;
-}
-
 edge[interaction = "cw"] {
 	line-color: white;
 }
 
-node[NodeType = "RedWine"],
-node[classes = "topic"] {
-	background-color: #4b4b4b;
-	text-outline-color: #4b4b4b;
+node[classes = "Course"] {
+	background-color: ##7d7369;
+	text-outline-color: ##7d7369;
     background-opacity : 0.0;
 }
 
 edge[interaction = "cr"] {
 	line-color: #DE3128;
-}
-
-node[NodeType = "Cider"] {
-	background-color: #A4EB34;
-	text-outline-color: #A4EB34;
 }
 
 node.highlighted {
@@ -75,7 +63,7 @@ node.highlighted {
 }
 
 edge.highlighted {
-	opacity: 0.4;
+	opacity: 0.8;
 	width: 4;
 	z-index: 9999;
 }
@@ -89,7 +77,7 @@ node.faded {
 }
 
 edge.faded {
-  opacity: 0;
+  opacity: 0.06;
 }
 
 .hidden {
