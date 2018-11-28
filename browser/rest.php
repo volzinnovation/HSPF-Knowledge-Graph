@@ -29,81 +29,157 @@ $app->get('/', function () {
 
 //match prof with course
 $app->get('/matchprof', function (Request $request) use ($neo4j) {
-    $limit = $request->get('limit', 50);
+	$limit = $request->get('limit', 50);
+	$profId = $request->get('profId', -1);
     $params = ['limit' => $limit];
-    $query = 'MATCH (p:Prof)-[r:teaches]-(c:Course) RETURN p,r,c LIMIT {limit}';
+	$query = 'MATCH (p:Prof{IDprof: '.$profId.'})-[r:teaches]-(c:Course) RETURN p,r,c LIMIT {limit}';
     $result = $neo4j->run($query, $params);
-    $nodes = [];
-    $edges = [];
     $identityMap = [];
-    foreach ($result->records() as $record){
-        $nodes[] = [
-            'lastname' => $record->get('p')->value('lastname'),
-			'firstname' => $record->get('p')->value('firstname'),
-			'school' => $record->get('p')->value('school'),
-            'label' => $record->get('p')->labels()[0]
-        ];
-        $identityMap[$record->get('p')->identity()] = count($nodes)-1;
-        $nodes[] = [
+    
+    $nodeProfRead = false;
+ 	
+    foreach ($result->records() as $record)
+	{
+		if (($record->get('p')->value('IDprof') ==  $profId) && (!$nodeProfRead))
+        {		
+			$node = [
+				'id' => $record->get('p')->value('IDprof'),
+				'name' => $record->get('p')->value('lastname'),
+				'firstname' => $record->get('p')->value('firstname'),
+				'classes' => $record->get('p')->labels()[0],
+				'selected' => true
+			];
+		
+			if ($record->get('p')->value('IDprof') == $profId)
+				$nodeProfRead = true;
+		
+			$nodes[] = [
+				'data' => $node,
+				'selected' => true
+				];		
+			 
+			$node = array();
+		}
+		
+        $identityMap[$record->get('p')->identity()] = count($node)-1;
+        $node = [
+			'id' => $record->get('c')->value('IDcourse'),
             'name' => $record->get('c')->value('name'),
-            'label' => $record->get('c')->labels()[0]
+            'classes' => $record->get('c')->labels()[0],
+			'selected' => false
         ];
-        $identityMap[$record->get('c')->identity()] = count($nodes)-1;
-        $edges[] = [
-            'source' => $identityMap[$record->get('r')->startNodeIdentity()],
-            'target' => $identityMap[$record->get('r')->endNodeIdentity()]
+		
+		$nodes[] = [
+	         'data' => $node,
+			 'selected' => false
+	         ];		
+			 
+		$node = array();
+	
+        $identityMap[$record->get('c')->identity()] = count($node)-1;
+        $edge = [
+			'source' => $record->get('p')->value('IDprof'),
+			'target' => $record->get('c')->value('IDcourse'),
+			'selected' => false
         ];
-    }
-    $data = [
+		
+		$edges[] = [
+	         'data' => $edge,
+			 'selected' => false
+	         ];
+		$edge = array();
+		
+	}
+			 
+    $elements = [
         'nodes' => $nodes,
-        'links' => $edges
+        'edges' => $edges
     ];
     $response = new JsonResponse();
-    $response->setData($data);
+    $response->setData($elements);
     return $response;
 });
+
 
 //match course with prof
 $app->get('/matchcourse', function (Request $request) use ($neo4j) {
     $limit = $request->get('limit', 50);
+	$courseId = $request->get('courseId', -1);
     $params = ['limit' => $limit];
-    $query = 'MATCH (c:Course)<-[r:teaches]-(p:Prof) RETURN c,r,p LIMIT {limit}';
+    $query = 'MATCH (c:Course {IDcourse: '.$courseId.'} )<-[r:teaches]-(p:Prof) RETURN c,r,p LIMIT {limit}';
     $result = $neo4j->run($query, $params);
-    $nodes = [];
-    $edges = [];
     $identityMap = [];
-    foreach ($result->records() as $record){
-        $nodes[] = [
-            'name' => $record->get('c')->value('name'),
-            'label' => $record->get('c')->labels()[0]
-        ];
-        $identityMap[$record->get('c')->identity()] = count($nodes)-1;
-        $nodes[] =[
-            'lastname' => $record->get('p')->value('lastname'),
-			'firstname' => $record->get('p')->value('firstname'),
-            'label' => $record->get('p')->labels()[0]
-        ];
-        $identityMap[$record->get('p')->identity()] = count($nodes)-1;
-        $edges[] = [
-            'source' => $identityMap[$record->get('r')->startNodeIdentity()],
-            'target' => $identityMap[$record->get('r')->endNodeIdentity()]
-        ];
+
+	$nodeCourseRead = false;
+	
+    foreach ($result->records() as $record)
+	{
+		if (($record->get('c')->value('IDcourse') == $courseId) && (!$nodeCourseRead))
+        {			
+			$node = [
+				'id' => $record->get('c')->value('IDcourse'),
+				'name' => $record->get('c')->value('name'),
+				'classes' => $record->get('c')->labels()[0],
+				'selected' => true
+			];
+			
+			if ($record->get('c')->value('IDcourse') == $courseId)
+				$nodeCourseRead = true;
+		
+			$nodes[] = [
+				'data' => $node,
+				'selected' => true
+			];		
+			 
+			$node = array();
+		}
+		
+			$identityMap[$record->get('c')->identity()] = count($nodes)-1;
+			$node =[
+				'id' => $record->get('p')->value('IDprof'),	
+				'name' => $record->get('p')->value('lastname'),
+				'firstname' => $record->get('p')->value('firstname'),
+				'classes' => $record->get('p')->labels()[0],
+				'selected' => false
+			];
+		
+			$nodes[] = [
+				'data' => $node,
+				'selected' => false
+	         ];		
+			 
+			$node = array();
+		
+			$identityMap[$record->get('p')->identity()] = count($nodes)-1;
+			$edge = [
+				'source' => $record->get('c')->value('IDcourse'),
+				'target' => $record->get('p')->value('IDprof'),
+				'selected' => false
+            ];
+			
+			$edges[] = [
+				'data' => $edge,
+				'selected' => false
+	         ];
+			 
+			$edge = array();		
     }
-    $data = [
+	
+    $elements = [
         'nodes' => $nodes,
-        'links' => $edges
+        'edges' => $edges
     ];
+	
     $response = new JsonResponse();
-    $response->setData($data);
+    $response->setData($elements);
     return $response;
 });
+
 
 //search prof
 $app->get('/search', function (Request $request) use ($neo4j) {
 	
     $searchTerm = $request->get('q');
-    
-	//error_log("/searchprof entry. Searchteram: " . $searchTerm);
 	
 	$term = '(?i).*'.$searchTerm.'.*';
     $queryp = 'MATCH (p:Prof) WHERE p.lastname =~ {term} RETURN p';
@@ -111,21 +187,16 @@ $app->get('/search', function (Request $request) use ($neo4j) {
 	$params = ['term' => $term];
     $result = $neo4j->run($queryp, $params);
 	
-	// DEBUG
-	//var_dump($result);
-	
 	$nodes = [];
     foreach ($result->records() as $record){
-        //$prof[] = ['prof' => $record->get('p')->values()];
-		//$prof[] = $record->get('p')->values();
 		$nodes[] = [ 'name' => $record->get('p')->value('lastname'),
-             		'NodeTypeFormatted' => 'Angestellter' ];
+		             'IDprof' => $record->get('p')->value('IDprof'), 
+             		 'NodeTypeFormatted' => 'Angestellter' ];
     } 
 	$result = $neo4j->run($queryc, $params);
 	foreach ($result->records() as $record){
-        //$prof[] = ['prof' => $record->get('p')->values()];
-		//$prof[] = $record->get('p')->values();
 		$nodes[] = [ 'name' => $record->get('c')->value('name'),
+		             'IDcourse' => $record->get('c')->value('IDcourse'),
              		'NodeTypeFormatted' => 'Kurs' ];
     } 
     $response = new JsonResponse();
