@@ -10,6 +10,11 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.queryparser.classic.QueryParser;
+import org.languagetool.AnalyzedSentence;
+import org.languagetool.AnalyzedToken;
+import org.languagetool.AnalyzedTokenReadings;
+import org.languagetool.JLanguageTool;
+import org.languagetool.language.GermanyGerman;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -23,9 +28,9 @@ import java.util.stream.Collectors;
  * @author Raphael Volz
  */
 public class TermCounter {
-    static String path = "C:\\Nudel\\nudel5\\data\\index";
+    static String path = "C:\\temp\\nudel\\data\\index";
 
-    static double min_tfidf =  70000.0; // Filter items with term length adjusted TF IDF larger this value
+    static double min_tfidf = 5000.0; // Filter items with term length adjusted TF IDF larger this value
     static int min_df = 10; // Minimum Document Frequency
     static String term, course;
     static int tf, df;
@@ -40,6 +45,7 @@ public class TermCounter {
      * @param args 3 Field to search for, default "_text_"
      */
     public static void main(String args[]) {
+        JLanguageTool langTool = new JLanguageTool(new GermanyGerman());
         MappingUtils mu = new MappingUtils();
         // Use command line arguments instead of preset value as search text
         if (args.length > 0) {
@@ -64,7 +70,7 @@ public class TermCounter {
         }
         if (args.length > 3) {
             // Third argument is the minimum value for document frequency
-                field = args[3];
+            field = args[3];
         }
         // Connecting to Lucene index at given path
         java.nio.file.Path p = Paths.get(path);
@@ -89,13 +95,15 @@ public class TermCounter {
             // Write rows of CSV file
             long i = 1L; // Count processed document-term combinations
             // Iterate over all top terms
+
             for (MyTermStats t : terms) {
                 term = t.getDecodedTermText();
+
                 df = t.getDocFreq();
                 // Filter terms that
                 // do not meet minimum document frequency
                 // or make no sense, because they contain contain characters such as  .,_:
-                if ( df >= min_df && !term.contains(",")  && !term.contains(":") && !term.contains("_") && !term.contains(".") ){
+                if (df >= min_df && !term.contains(",") && !term.contains(":") && !term.contains("_") && !term.contains(".")) {
                     // Check that Term is not a floating point number
                     boolean isNumber = true;
                     try {
@@ -103,7 +111,7 @@ public class TermCounter {
                     } catch (NumberFormatException nfe) {
                         isNumber = false;
                     }
-                    if(!isNumber) {
+                    if (!isNumber) {
                         // Check that Term is not a hexadecimal integer
                         isNumber = true;
                         try {
@@ -114,37 +122,58 @@ public class TermCounter {
                     }
                     // If not a number, search all documents with this term
                     if (!isNumber) {
-
-                        // Start Searching the Index
-                        long time2 = System.currentTimeMillis(); // Remember when the search started
-                        TopDocs docs = null;
-
-                        // Search for term and accept 1 million results
-                        try {
-                            Query query = new QueryParser(field, analyzer).parse(t.toString());
-                            docs = searcher.search(query, 1000000);
-                        } catch (org.apache.lucene.queryparser.classic.ParseException pe) {
-                            // TODO Handle ParseException, something went wrong while searching
-                        }
-                        // Found documents for the search term
-                        if (docs != null) {
-                            ScoreDoc[] hits = docs.scoreDocs;
-                            if (hits.length > 0) {
-                                time = System.currentTimeMillis(); // Reset time measurement
-                                // Aggregate term frequencies by courses in map courses
-                                HashMap<String, Integer> courses = new HashMap<String, Integer>();
-                                // Aggregate term frequencies by course id
-                                // TODO Could make this more effective and push to Lucene using faceted search instead of plain search
-                                for (int j = 0; j < hits.length; j++) {
-                                    int docId = hits[j].doc;
-                                    Document d = searcher.doc(docId);
-                                    // Count Occurences of search results per course
-                                    String course_id = d.get("courseid");
-                                    Integer count = courses.containsKey(course_id) ? courses.get(course_id) + 1 : 1;
-                                    courses.put(course_id, count);
-                                    // Print each search Result
-                                    // print((j + 1) + ": '" + d.get("title") + "' course #" + d.get("courseid"));
+                        // Check whether this is German Noun
+                        boolean isNoun = false;
+                        // Indexing made everything lowercase, revert
+                        String term2 = term.substring(0,1).toUpperCase() + term.substring(1);
+                        List<AnalyzedSentence> analyzedSentences = langTool.analyzeText(term2);
+                        for (AnalyzedSentence s : analyzedSentences) {
+                            AnalyzedTokenReadings[] tokens = s.getTokens();
+                            for (AnalyzedTokenReadings tr : tokens) {
+                                List<AnalyzedToken> readings = tr.getReadings();
+                                for (AnalyzedToken at : readings) {
+                                    if (at != null && at.getPOSTag() != null && at.getPOSTag().startsWith("SUB")) {
+                                        isNoun = true;
+                                        term = at.getLemma();
+                                        // print(at.getToken() + " | " + at.getLemma() );
+                                        break;
+                                    }
                                 }
+                            }
+                        }
+                        if (isNoun) {
+
+
+                            // Start Searching the Index
+                            long time2 = System.currentTimeMillis(); // Remember when the search started
+                            TopDocs docs = null;
+
+                            // Search for term and accept 1 million results
+                            try {
+                                Query query = new QueryParser(field, analyzer).parse(t.toString());
+                                docs = searcher.search(query, 1000000);
+                            } catch (org.apache.lucene.queryparser.classic.ParseException pe) {
+                                // TODO Handle ParseException, something went wrong while searching
+                            }
+                            // Found documents for the search term
+                            if (docs != null) {
+                                ScoreDoc[] hits = docs.scoreDocs;
+                                if (hits.length > 0) {
+                                    time = System.currentTimeMillis(); // Reset time measurement
+                                    // Aggregate term frequencies by courses in map courses
+                                    HashMap<String, Integer> courses = new HashMap<String, Integer>();
+                                    // Aggregate term frequencies by course id
+                                    // TODO Could make this more effective and push to Lucene using faceted search instead of plain search
+                                    for (int j = 0; j < hits.length; j++) {
+                                        int docId = hits[j].doc;
+                                        Document d = searcher.doc(docId);
+                                        // Count Occurences of search results per course
+                                        String course_id = d.get("courseid");
+                                        Integer count = courses.containsKey(course_id) ? courses.get(course_id) + 1 : 1;
+                                        courses.put(course_id, count);
+                                        // Print each search Result
+                                        // print((j + 1) + ": '" + d.get("title") + "' course #" + d.get("courseid"));
+                                    }
                                 /*
                                 // Sort Courses by Counts Descending, long live the Java 8 Stream API
                                 Map<String, Integer> sortedCourses =
@@ -157,28 +186,31 @@ public class TermCounter {
                                 time = (System.currentTimeMillis() - time); // Measure time needed
                                 // print("... I identify the following " + top + " courses, which contain '" + suchtext + "' most often (" + time + " ms)");
                                 */
-                                // Iterate over all courses relevant to search term
-                                for (String course_id : courses.keySet()) {
-                                    i++;
-                                    course = course_id;
-                                    tf = courses.get(course_id);
-                                    double idf = Math.log( (double) N / ( 1 + df ));
-                                    double tfidf = (double) tf * idf;
-                                    int term_length = term.length();
-                                    double tl_tfidf = tfidf * term_length;
-                                    // If the minimum value for the metric is met, produce a line for the CSV file
-                                    if (tl_tfidf > min_tfidf) {
-                                        if(mu.getProfessorIds(course) != null) {
-                                            for(String prof : mu.getProfessorIds(course)) {
-                                                print(i + "," + term + "," + course + "," + prof + "," + tf + "," + df + "," + tfidf + "," + term_length + "," + tl_tfidf);
+
+                                    // Iterate over all courses relevant to search term
+                                    for (String course_id : courses.keySet()) {
+                                        i++;
+                                        course = course_id;
+                                        tf = courses.get(course_id);
+                                        double idf = Math.log((double) N / (1 + df));
+                                        double tfidf = (double) tf * idf;
+                                        int term_length = term.length();
+                                        double tl_tfidf = tfidf * term_length;
+                                        // If the minimum value for the metric is met, produce a line for the CSV file
+                                        if (tl_tfidf > min_tfidf) {
+                                            if (mu.getProfessorIds(course) != null) {
+                                                for (String prof : mu.getProfessorIds(course)) {
+                                                  print(i + "," + term + "," + course + "," + prof + "," + tf + "," + df + "," + (long)  tfidf + "," + term_length + "," + (long) tl_tfidf);
+                                                }
+                                            } else {
+                                                // TODO Check where this occurs, prof - course mapping table is incomplete, if this happens
+                                                System.err.println(i + "," + term + "," + course + "," + "???" + "," + tf + "," + df + "," + (long) tfidf + "," + term_length + "," + (long) tl_tfidf);
                                             }
-                                        } else {
-                                            // TODO Check where this occurs, prof - course mapping table is incomplete, if this happens
-                                            print(i + "," + term + "," + course + "," + "???" + "," + tf + "," + df + "," + tfidf + "," + term_length + "," + tl_tfidf);
                                         }
                                     }
                                 }
                             }
+
                         }
                     }
                 }

@@ -24,13 +24,12 @@ public class MappingUtils {
             String line = "";
             String cvsSplitBy = ",";
             try {
-                this.getClass().getResource("foo.txt");
                 br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(csvFile)));
                 while ((line = br.readLine()) != null) {
                     // use comma as separator
                     String[] cols = line.split(cvsSplitBy);
-                    String course_id = cols[1];
-                    String prof_id = cols[0];
+                    String course_id = cols[1].trim();
+                    String prof_id = cols[0].trim();
                     // Build Course -> Prof Mapping
                     List<String> p = cp.containsKey(course_id) ? cp.get(course_id) : new LinkedList<String>();
                     p.add(prof_id);
@@ -66,7 +65,7 @@ public class MappingUtils {
      * @return List of professor id Strings
      */
     public List<String> getProfessorIds(String course_id) {
-        return cp.get(course_id);
+        return cp.get(course_id.trim());
     }
     /**
      * Get the list of professor ids for a given course_id
@@ -74,7 +73,7 @@ public class MappingUtils {
      * @return List of course id Strings
      */
     public List<String> getCourseIds(String prof_id) {
-        return pc.get(prof_id);
+        return pc.get(prof_id.trim());
     }
 
     public Set<String> getProfessorIds() {
@@ -88,5 +87,6 @@ public class MappingUtils {
         MappingUtils me = new MappingUtils();
         System.out.println("# Professors: " + me.getProfessorIds().size());
         System.out.println("# Courses: " + me.getCourseIds().size());
+        System.out.println("# Kurs 410 sollte sein 67 ? " + me.getProfessorIds("410"));
     }
 }
