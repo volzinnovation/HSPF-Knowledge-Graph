@@ -30,11 +30,11 @@ import java.util.stream.Collectors;
 public class TermCounter {
     static String path = "C:\\temp\\nudel\\data\\index";
 
-    static double min_tfidf = 5000.0; // Filter items with term length adjusted TF IDF larger this value
+    static double min_tfidf = 500.0; // Filter items with term length adjusted TF IDF larger this value
     static int min_df = 10; // Minimum Document Frequency
     static String term, course;
     static int tf, df;
-    static String field = "solr_filecontent";
+    static String field = "_text_";
 
     /**
      * Run TermCounter
@@ -134,7 +134,7 @@ public class TermCounter {
                                 for (AnalyzedToken at : readings) {
                                     if (at != null && at.getPOSTag() != null && at.getPOSTag().startsWith("SUB")) {
                                         isNoun = true;
-                                        term = at.getLemma();
+                                        // term = at.getLemma();
                                         // print(at.getToken() + " | " + at.getLemma() );
                                         break;
                                     }
