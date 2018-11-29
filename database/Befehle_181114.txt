@@ -1,5 +1,6 @@
-1)
+Team Datenbank
 
+1)
 LOAD CSV WITH HEADERS FROM 'file:///prof.csv' AS line
 CREATE (:Prof { IDprof: toInt(line.id_prof),email: line.email, alias: line.alias, lastname: line.lastname, firstname:line.firstname, school:line.school,role:line.role,office:line.office,phone:line.phone})
 
@@ -15,5 +16,16 @@ CREATE (p)-[:teaches]->(c)
 
 
 
+Team Index 
 
+4) Knoten "Topic" anlegen 
+LOAD CSV WITH HEADERS FROM 'file:///topic.csv' AS line
+CREATE (:Topic {title: line.title, profID: toInt(line.profID)})
+
+
+5) Kante "knows" anlegen
+USING PERIODIC COMMIT 500
+LOAD CSV WITH HEADERS FROM 'file:///edge_prof_topic.csv' AS kanteline
+MATCH (p:Prof {IDprof:toInt(kanteline.id_prof)}), (t:Topic {profID: toInt(kanteline.profID)})
+CREATE (p)-[:knows]->(t)
 
