@@ -14,16 +14,22 @@ LOAD CSV WITH HEADERS FROM 'file:///edge_course_prof.csv' AS kanteline
 MATCH (p:Prof {IDprof: toInt(kanteline.id_prof)}), (c:Course { IDcourse: toInt(kanteline.id_course)})
 CREATE (p)-[:teaches]->(c)
 
+4)
+CREATE INDEX ON :Prof(alias,lastname,firstname,school,role,office,phone,email,IDprof)
+
+5)
+CREATE INDEX ON :course(IDcourse,name)
+
 
 
 Team Index 
 
-4) Knoten "Topic" anlegen 
+6) Knoten "Topic" anlegen 
 LOAD CSV WITH HEADERS FROM 'file:///topic.csv' AS line
 CREATE (:Topic {title: line.title, profID: toInt(line.profID)})
 
 
-5) Kante "knows" anlegen
+7) Kante "knows" anlegen
 USING PERIODIC COMMIT 500
 LOAD CSV WITH HEADERS FROM 'file:///edge_prof_topic.csv' AS kanteline
 MATCH (p:Prof {IDprof:toInt(kanteline.id_prof)}), (t:Topic {profID: toInt(kanteline.profID)})
