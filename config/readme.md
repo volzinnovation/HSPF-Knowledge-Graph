@@ -1,16 +1,15 @@
-# Installationsanleitung
+# Anleitung
 
-1. Den Ordner "" 
-IP-Adresse "xxxxxxxxxxxxxxx"in die Adressleiste des Browsers eingeben
+1. IP-Adresse "xxxxxxxxxxxxxxx"in die Adressleiste des Browsers eingeben
 
 2. Benutzername und Passwort eingeben und auf "Anmelden" klicken.
 
-3. Sollten keine Themen sichtbar sein, bitte folgendes durchführen:
+ACHTUNG: Logikfehler im Aufbau der Datenbank vorhanden
+--> Themen werden mehrfach angezeigt
 
-    a) In die Adressleiste des Browsers "xxxxxxxxxxxxxx" eingeben
-    b) Folgenden Befehl ausführen: 
-          MATCH (a:Prof)-[r]-(b:Topic)
-          SET r.deleted="false"
-        Dies setzt bei allen Verbindungen "knows" zwischen Prof und Topic den Wert des Attributs "Deleted" auf "false"
- 
-4. Bei 1. beginnen
+Ursache: In der Datenbank wird das selbe Topic mehfach als Knoten angelegt und zwar je Prof, der es beherrscht.
+Beispiel: Fünf Profs seien mit dem Topic "HTML" vertraut. In der vorliegenden Datenbank wird nun ein Knoten "HTML" erzeugt je Prof, der das Topic beherrscht. 
+Richtig wäre: Ein einziger Knoten mit fünf Verbindungen zu den einzelnen Profs.
+
+Zu unserer Entlastung: Unter IP-Adresse "xxxxxxxxxxx" findet sich die Applikation mit dem EXAKT SELBEN Code, allerdings
+mit Zugriff auf die - richtig aufgebaute - Testdatenbank.
