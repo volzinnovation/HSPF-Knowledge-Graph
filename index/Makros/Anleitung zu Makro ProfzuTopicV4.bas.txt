@@ -1,0 +1,8 @@
+Anleitung zu Makro ProfzuTopicV4.bas:
+
+1. csv-Datei mit Java Programm erstellen
+2. csv-Datei in TopThemen.csv umbenennen
+3. In Makro muss der Pfad für den Speicherort angepasst werden (Die csv-Datei muss topic.csv heißen)
+4. Makro starten
+5. Die csv-Dateien "edge_prof_topic.csv" und "topic.csv" auf Server laden in var/lib/neo4j/import
+6. Cypher Befehle ausführen um die Datenbank zu erstellen
