@@ -318,7 +318,7 @@ Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         
         
     Application.DisplayAlerts = False
-ActiveSheet.SaveAs Filename:="C:\Users\knot_topic_topicID.csv", FileFormat:=xlCSV, CreateBackup:=False, Local:=True
+ActiveSheet.SaveAs Filename:="C:\temp\knot_topic_topicID.csv", FileFormat:=xlCSV, CreateBackup:=False, Local:=True
 Application.DisplayAlerts = True
 
 
@@ -349,7 +349,7 @@ Range("B2").Select
     Sheets("Kante").Select
     Sheets("Kante").Move
 
-ActiveSheet.SaveAs Filename:="C:\Users\edge_prof_topic.csv", FileFormat:=xlCSV, CreateBackup:=False, Local:=True
+ActiveSheet.SaveAs Filename:="C:\temp\edge_prof_topic.csv", FileFormat:=xlCSV, CreateBackup:=False, Local:=True
 Application.DisplayAlerts = True
 ActiveWorkbook.Close SaveChanges:=True
 ActiveWorkbook.Close SaveChanges:=False

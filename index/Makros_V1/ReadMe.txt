@@ -2,7 +2,7 @@ Hallo lieber Anwender hier ist eine kurze Beschreibung wie die CSV-Datei, für di
 
 1. Legen sie die Ausgangsdatei aus dem TermCounter mit dem Namen "dtm.csv" unter folgendem Pfad ab :"C:\dtm.csv"
 
-2. Zunächst können in der Visual Basic Datei die Pfade angepasst werden (ohne Anpassungen werden sie direkt in :C\Users gespeichert):
+2. Zunächst können in der Visual Basic Datei die Pfade angepasst werden (ohne Anpassungen werden sie direkt in :C\temp gespeichert):
 	Zeile 12  ->  Pfad Ausgangsdatei	
 	Zeile 319 ->  Pfad Datei für die Knoten 
 	Zeile 350 ->  Pfad Datei für die Kanten
@@ -12,4 +12,6 @@ Hallo lieber Anwender hier ist eine kurze Beschreibung wie die CSV-Datei, für di
 
 
 Für die Erstellung müssen sie die Makros aktivieren/vertrauen und auf den Butten CSV erstellen drücken.
-Die zwei CSV Dateien für den Upload liegen nun Unter dem oben genannten Pfad ab.
+Die zwei CSV Dateien für den Upload liegen nun Unter dem genannten Pfad(:C\temp) ab.
+
+PFAD : :C\temp
