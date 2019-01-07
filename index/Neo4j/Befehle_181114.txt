@@ -38,3 +38,5 @@ USING PERIODIC COMMIT 500
 LOAD CSV WITH HEADERS FROM 'file:///edge_prof_topic.csv' AS kanteline
 MATCH (p:Prof {IDprof:toInt(kanteline.profID)}), (t:Topic {IDtopic: toInt(kanteline.topicID)})
 CREATE (p)-[:knows]->(t)
+MATCH (a:Prof)-[r]-(b:Topic)
+SET r.deleted = "false"
