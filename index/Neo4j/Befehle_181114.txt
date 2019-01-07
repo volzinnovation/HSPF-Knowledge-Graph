@@ -25,6 +25,10 @@ CREATE INDEX ON :Prof(alias,lastname,firstname,school,role,office,phone,email,ID
 5)
 CREATE INDEX ON :course(IDcourse,name)
 
+-----
+neue Indezierung einbinden
+-----
+
 6) Knoten "Topic" anlegen 
 LOAD CSV WITH HEADERS FROM 'file:///knot_topic_topicID.csv' AS line
 CREATE (:Topic {title: line.title, IDtopic: toInt(line.topicID)})
