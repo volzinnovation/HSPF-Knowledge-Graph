@@ -1,4 +1,9 @@
-Import der CSV-Dateien: /var/lib/neo4j/import/
+Alte Datenbank löschen:
+sudo service neo4j stop
+rm -rf /var/lib/neo4j/data/*
+sudo service neo4j start
+
+Import der neuen CSV-Dateien nach /var/lib/neo4j/import/
 
 1)
 LOAD CSV WITH HEADERS FROM 'file:///prof.csv' AS line
