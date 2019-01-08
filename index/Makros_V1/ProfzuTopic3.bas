@@ -206,7 +206,7 @@ Rows("1:1").Select
     '
     '
     Application.DisplayAlerts = False
-    ActiveWorkbook.SaveAs Filename:="C:\Nudel\topic.csv"
+    ActiveWorkbook.SaveAs Filename:="C:\temp\topic.csv"
     Application.DisplayAlerts = True
 
 
@@ -302,11 +302,21 @@ Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
     
     Selection.AutoFill Destination:=Range(ActiveCell, ActiveCell.End(xlUp)), Type:=xlFillDefault
     
-    Range("C1").Select
+     
+    
+    Columns("C:C").Select
     Selection.Copy
+    
+    Columns("D:D").Select
+    
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-    Columns("A:B").Select
+    
+    Range("C1").Select
+'    Selection.Copy
+ '   Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+  '      :=False, Transpose:=False
+    Columns("A:C").Select
     Application.CutCopyMode = False
     Selection.Delete Shift:=xlToLeft
     
@@ -318,7 +328,7 @@ Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         
         
     Application.DisplayAlerts = False
-ActiveSheet.SaveAs Filename:="C:\Nudel\knot_topic_topicID.csv", FileFormat:=xlCSV, CreateBackup:=False, Local:=True
+ActiveSheet.SaveAs Filename:="C:\temp\knot_topic_topicID.csv", FileFormat:=xlCSV, CreateBackup:=False, Local:=True
 Application.DisplayAlerts = True
 
 
@@ -349,14 +359,14 @@ Range("B2").Select
     Sheets("Kante").Select
     Sheets("Kante").Move
     
-ActiveSheet.SaveAs Filename:="C:\Nudel\edge_prof_topic.csv", FileFormat:=xlCSV, CreateBackup:=False, Local:=True
+ActiveSheet.SaveAs Filename:="C:\temp\edge_prof_topic.csv", FileFormat:=xlCSV, CreateBackup:=False, Local:=True
 Application.DisplayAlerts = True
 ActiveWorkbook.Close SaveChanges:=True
 ActiveWorkbook.Close SaveChanges:=False
 ActiveWorkbook.Close SaveChanges:=False
 ActiveWorkbook.Close SaveChanges:=False
 
-Kill "C:\Nudel\topic.csv"
+Kill "C:\temp\topic.csv"
   Application.DisplayAlerts = True
   
   
