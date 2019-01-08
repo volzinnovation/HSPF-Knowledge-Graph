@@ -16,3 +16,5 @@ Für die Erstellung müssen sie die Makros aktivieren/vertrauen und auf den Butten
 Die zwei CSV Dateien für den Upload liegen nun Unter dem genannten Pfad(:C\temp) ab.
 
 PFAD : :C\temp
+
+4. In der Datei "edge_prof_topic.csv" müssen anschließend die Dupliakte entfernt werden. 

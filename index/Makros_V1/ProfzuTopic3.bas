@@ -7,9 +7,9 @@ Attribute ProfzuTopic.VB_ProcData.VB_Invoke_Func = " \n14"
 'Hier werden die Zeilen gelöscht die ein ??? als Prof haben
 '
 '
-Application.ScreenUpdating = True ' Zum testen auf true im betrieb auf False
+Application.ScreenUpdating = False ' Zum Testen auf True im Betrieb auf False
 
-    ChDir "C:\Users\nilsr\Desktop\Final_IT\Volzergebnisse"
+    ChDir "C:"
     Workbooks.Open Filename:= _
         "C:\dtm.csv"
    
