@@ -9,7 +9,7 @@ Attribute ProfzuTopic.VB_ProcData.VB_Invoke_Func = " \n14"
 '
 Application.ScreenUpdating = False ' Zum testen auf true im betrieb auf False
 
-    'ChDir "C:\Users\nilsr\Desktop\Final_IT\Volzergebnisse"
+    'ChDir "C:"
     Workbooks.Open Filename:= _
         "C:\dtm.csv"
    
