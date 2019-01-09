@@ -7,9 +7,9 @@ Attribute ProfzuTopic.VB_ProcData.VB_Invoke_Func = " \n14"
 'Hier werden die Zeilen gelöscht die ein ??? als Prof haben
 '
 '
-Application.ScreenUpdating = True ' Zum testen auf true im betrieb auf False
+Application.ScreenUpdating = False ' Zum Testen auf True im Betrieb auf False
 
-    ChDir "C:\Users\nilsr\Desktop\Final_IT\Volzergebnisse"
+    ChDir "C:"
     Workbooks.Open Filename:= _
         "C:\dtm.csv"
    
@@ -354,10 +354,16 @@ Range("B2").Select
     Sheets("Kante").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-
+ 
+  Columns("A:A").Select
+    Application.CutCopyMode = False
+    ActiveSheet.Range("$A$1:$A$9731").RemoveDuplicates Columns:=1, Header:=xlNo
+    
     Application.DisplayAlerts = False
     Sheets("Kante").Select
     Sheets("Kante").Move
+    
+    
     
 ActiveSheet.SaveAs Filename:="C:\temp\edge_prof_topic.csv", FileFormat:=xlCSV, CreateBackup:=False, Local:=True
 Application.DisplayAlerts = True
