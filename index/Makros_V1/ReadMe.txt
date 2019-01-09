@@ -5,8 +5,8 @@ Hallo lieber Anwender hier ist eine kurze Beschreibung wie die CSV-Datei, für di
 2. Zunächst können in der Visual Basic Datei die Pfade angepasst werden (ohne Anpassungen werden sie direkt in :C\temp gespeichert):
 	Zeile 12  ->  Pfad Ausgangsdatei
 	Zeile 207 ->  Pfad Datei topic (Wird zum Ende des Makros wieder gelöscht)
-	Zeile 319 ->  Pfad Datei für die Knoten 
-	Zeile 350 ->  Pfad Datei für die Kanten
+	Zeile 329 ->  Pfad Datei für die Knoten 
+	Zeile 366 ->  Pfad Datei für die Kanten
 
 3. Für Testzwecke ist die Funktion Stopwords herausfiltern auskommentiert (aufgrund von langen Berechnungszeiten)
 	für Berücksichtigung der Stopwords bitte Zeile 71 bis 86 aktivieren.
@@ -17,4 +17,3 @@ Die zwei CSV Dateien für den Upload liegen nun Unter dem genannten Pfad(:C\temp)
 
 PFAD : :C\temp
 
-4. In der Datei "edge_prof_topic.csv" müssen anschließend die Dupliakte entfernt werden. 
