@@ -40,3 +40,9 @@ MATCH (p:Prof {IDprof:toInt(kanteline.profID)}), (t:Topic {IDtopic: toInt(kantel
 CREATE (p)-[:knows]->(t)
 MATCH (a:Prof)-[r]-(b:Topic)
 SET r.deleted = "false"
+
+--------------------
+Löschen von allen Topics und deren Verbindungen:
+MATCH (n:Topics)
+DETACH DELETE n
+--------------------
